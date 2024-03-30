@@ -1,0 +1,48 @@
+.footer
+  height: 70px
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+
+  z-index: 999
+
+  background-color: #222
+
+  .navigate
+    height: 100%
+
+    .links
+      height: 100%
+
+      display: flex
+      align-items: center
+      justify-content: space-around
+      list-style: none
+
+      .link
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-between
+
+        width: 45px
+        height: 45px
+
+        color: #666
+
+        &.active
+          color: white
+
+        .icon
+          height: 24px
+          margin-bottom: 5px
+
+        .avatar
+          width: 24px
+          height: 24px
+          border-radius: 16px
+
+        .label
+          font-size: 11px
+          white-space: nowrap
