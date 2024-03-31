@@ -3,8 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faHeart, faHouse, faMagnifyingGlass, faNewspaper} from "@fortawesome/free-solid-svg-icons";
+import { ReactElement } from 'react'
 
-export default function Footer() {
+/**
+ * Renders the footer component.
+ * @returns {ReactElement} The footer ReactElement.
+ */
+export default function Footer(): ReactElement {
     return (
         <footer className={styles.footer}>
             <nav className={styles.navigate}>

@@ -1,8 +1,13 @@
-import RecommendedManga from "@/components/Presentation/RecommendedManga";
-import CardList from "@/components/Presentation/CardList/CardList";
-import Card from "@/components/Presentation/CardList/Card";
+import RecommendedManga from "@/components/Presentation/RecommendedManga"
+import CardList from "@/components/Presentation/CardList/CardList"
+import Card from "@/components/Presentation/CardList/Card"
+import { ReactElement } from 'react'
 
-export default function Home() {
+/**
+ * Home page component.
+ * @returns {ReactElement} The home page ReactElement.
+ */
+export default function Home(): ReactElement {
     return (
         <div>
             <RecommendedManga/>

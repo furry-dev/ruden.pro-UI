@@ -1,8 +1,13 @@
-import styles from "./MangaActions.module.sass";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBookOpen, faCircleInfo, faPlus} from "@fortawesome/free-solid-svg-icons";
+import styles from "./MangaActions.module.sass"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faBookOpen, faCircleInfo, faPlus} from "@fortawesome/free-solid-svg-icons"
+import { ReactElement } from 'react'
 
-export default function MangaActions() {
+/**
+ * Renders manga actions component.
+ * @returns {ReactElement} The manga actions ReactElement.
+ */
+export default function MangaActions(): ReactElement {
     return (
         <div className={styles.actions}>
             <button className={`${styles.button} ${styles['actions-button']}`}>

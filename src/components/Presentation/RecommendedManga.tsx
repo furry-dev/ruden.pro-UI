@@ -2,15 +2,19 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import styles from './RecommendedManga.module.sass'
-import GenreList from '@/components/Presentation/GenreList/GenreList';
-import MangaActions from '@/components/Presentation/MangaActions';
-import createApolloClient from '@/apollo/apollo-client';
-import {gql} from '@/__generated__';
-import Image from 'next/image';
+import GenreList from '@/components/Presentation/GenreList/GenreList'
+import MangaActions from '@/components/Presentation/MangaActions'
+import createApolloClient from '@/apollo/apollo-client'
+import {gql} from '@/__generated__'
+import Image from 'next/image'
+import { ReactElement } from 'react'
 
-
+/**
+ * Fetches manga data from the server.
+ * @returns {Promise<object>} The manga data fetched from the server.
+ */
 export async function getServerSideProps() {
-    const client = createApolloClient();
+    const client = createApolloClient()
     const { data } = await client.query({
         query: gql(/*GraphQL*/`
             query Mangas($limit: Int, $page: Int) {
@@ -44,7 +48,11 @@ export async function getServerSideProps() {
     return data.mangaList
 }
 
-export default function RecommendedManga() {
+/**
+ * Displays recommended manga.
+ * @returns {ReactElement} The recommended manga ReactElement.
+ */
+export default function RecommendedManga(): ReactElement {
     const genres = ['Повседневность', 'Романтика', 'Школа']
 
     getServerSideProps().then(r => console.log(r))

@@ -2,8 +2,14 @@ import Logo from "@/components/Basic/Logo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBell} from "@fortawesome/free-solid-svg-icons";
 import styles from './Header.module.sass'
+import { ReactElement } from 'react';
 
-export default function Header() {
+
+/**
+ * Function to render the page header.
+ * @returns {ReactElement} The header ReactElement.
+ */
+export default function Header(): ReactElement {
     return (
         <header className={styles.header}>
             <Logo/>
