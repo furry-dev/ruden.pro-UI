@@ -1,13 +1,13 @@
-import styles from "./MangaActions.module.sass"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faBookOpen, faCircleInfo, faPlus} from "@fortawesome/free-solid-svg-icons"
+import styles from './MangaPageActions.module.sass'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookOpen, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { ReactElement } from 'react'
 
 /**
- * Renders manga actions component.
+ * Renders manga page actions component.
  * @returns {ReactElement} The manga actions ReactElement.
  */
-export default function MangaActions(): ReactElement {
+export default function MangaPageActions(): ReactElement {
     return (
         <div className={styles.actions}>
             <button className={`${styles.button} ${styles['actions-button']}`}>
@@ -17,10 +17,6 @@ export default function MangaActions(): ReactElement {
             <button className={`${styles['read-button']} ${styles.button}`}>
                 <FontAwesomeIcon icon={faBookOpen} className={styles.icon}/>
                 Читать
-            </button>
-            <button className={`${styles.button} ${styles['actions-button']}`}>
-                <FontAwesomeIcon icon={faCircleInfo} className={styles.icon}/>
-                Подробнее
             </button>
         </div>
     )

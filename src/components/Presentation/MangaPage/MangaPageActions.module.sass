@@ -1,0 +1,41 @@
+.actions
+  display: flex
+  align-items: center
+  justify-content: space-evenly
+
+  gap: 30px
+
+  .button
+    flex: 1 1 50%
+
+    border: 2px solid white
+    outline: none
+    background: none
+
+    display: flex
+    align-items: center
+    justify-content: center
+
+    border-radius: 5px
+    column-gap: 10px
+
+    font-size: 15px
+    padding: 0.5rem 1rem
+    font-weight: bold
+
+    .icon
+      height: 22px
+      width: 22px
+      color: inherit
+
+  .actions-button
+    color: white
+    &:hover, &:focus
+      color: inherit
+      background-color: white
+
+  .read-button
+    background-color: white
+    &:hover, &:focus
+      background: none
+      color: white

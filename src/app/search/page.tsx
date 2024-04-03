@@ -1,9 +1,15 @@
 import { ReactElement } from 'react'
+import SearchHeader from '@/components/SearchPage/SearchHeader/SearchHeader';
 
 /**
  * Search page component.
  * @returns {ReactElement} The search page ReactElement.
  */
 export default function Search(): ReactElement {
-    return (<h3>Search</h3>)
+    return (
+        <main>
+            <SearchHeader />
+            {/*Список манг*/}
+        </main>
+    )
 }
