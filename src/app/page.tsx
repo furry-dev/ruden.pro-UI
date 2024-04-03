@@ -3,8 +3,8 @@ import CardList from "@/components/Presentation/CardList/CardList"
 import MangaCard from "@/components/Presentation/CardList/MangaCard"
 import React, { ReactElement } from 'react'
 import createApolloClient from '@/apollo/apollo-client'
-import { gql } from '@apollo/client'
 import { Manga } from '@/components/Presentation/CardList/MangaCard'
+import { gql } from '@/__generated__';
 
 /**
  * Fetches manga data from the server.
@@ -13,8 +13,8 @@ import { Manga } from '@/components/Presentation/CardList/MangaCard'
 async function getMangaList(): Promise<Manga[]> {
     const client = createApolloClient()
     const { data } = await client.query({
-        query: gql`
-            query Query($langId: [Int]) {
+        query: gql(/* GraphQL */`
+            query GetRecommendedMangas($langId: [Int]) {
                 mangaList(langId: $langId) {
                     id
                     age_rating
@@ -23,7 +23,7 @@ async function getMangaList(): Promise<Manga[]> {
                     }
                 }
             }
-        `
+        `)
     })
 
     return data.mangaList as Manga[]
@@ -41,7 +41,7 @@ export default async function Home(): Promise<ReactElement> {
             <RecommendedManga/>
             <CardList title={"Новинки: "}>
                 {mangas.map((manga) => (
-                    <MangaCard manga={manga}/>
+                    <MangaCard key={manga.id} manga={manga}/>
                 ))}
             </CardList>
         </main>
