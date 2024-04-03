@@ -6,7 +6,7 @@ import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/clie
  */
 export default function createApolloClient(): ApolloClient<NormalizedCacheObject> {
     return new ApolloClient({
-        uri: "http://localhost:3005",
+        uri: "http://192.168.31.3:3005",
         cache: new InMemoryCache(),
     })
 }
