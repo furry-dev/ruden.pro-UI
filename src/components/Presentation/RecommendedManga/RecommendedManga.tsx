@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import styles from './RecommendedManga.module.sass'
-import GenreList from '@/components/Presentation/GenreList/GenreList'
-import RecommendedMangaActions from '@/components/Presentation/RecommendedManga/RecommendedMangaActions'
+import GenreList from '@/components/Presentation/Lists/GenreList/GenreList'
+import RecommendedMangaActions from '@/components/Presentation/RecommendedManga/Actions/RecommendedMangaActions'
 import createApolloClient from '@/apollo/apollo-client'
 import Image from 'next/image'
 import { gql } from '@apollo/client'
-import AgeRatingFlag, { GraphQLAgeRating } from '@/components/Presentation/AgeRatingFlag'
+import AgeRatingFlag, { GraphQLAgeRating } from '@/components/Presentation/Flags/AgeRatingFlag'
 
 
 interface Manga {

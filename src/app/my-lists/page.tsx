@@ -1,5 +1,5 @@
 import { ReactElement } from 'react'
-import MyListsTabs from '@/components/MyListsPage/MyListsTabs/MyListsTabs';
+import MyListsTabs from '@/components/screens/MyLists/MyListsTabs/MyListsTabs';
 
 /**
  * My-list page component.

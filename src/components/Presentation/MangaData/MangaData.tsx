@@ -1,13 +1,12 @@
 "use client"
 
-import React, { useState } from 'react';
-import styles from './MangaData.module.sass';
-import ChapterList from '@/components/Presentation/ChapterList';
-import MangaDataGenres from '@/components/Presentation/MangaPage/MangaDataGenres';
-import MangaMetaData from '@/components/Presentation/MangaPage/MangaMetaData';
-import SwipeableViews, { OnSwitchingCallback } from 'react-swipeable-views';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import styles from './MangaData.module.sass'
+import ChapterList from '@/components/Presentation/Lists/ChapterList/ChapterList'
+import SwipeableViews from 'react-swipeable-views'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import MangaDataGenres from '@/components/Presentation/MangaData/Genres/MangaDataGenres'
+import MangaMetaData from '@/components/Presentation/MangaData/Meta/MangaMetaData'
 
 export default function MangaData() {
     const handleSwipe = () => {

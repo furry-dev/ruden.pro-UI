@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import CategoryLink from '@/components/Presentation/CategoryLink';
+import CategoryLink from '@/components/Presentation/Links/Category/CategoryLink';
 
 export default function MyListsTabs() {
     return (

@@ -1,14 +1,5 @@
-import styles from './GenreList.module.sass'
+import styles from './GenreList.module.sass';
 import { Fragment, ReactElement } from 'react';
-
-/**
- * Represents the props for the GenreList component.
- * @param {object} props - The props object.
- * @param {string[]} genres - An array of genre strings.
- */
-interface GenreListProps {
-    genres: string[]
-}
 
 /**
  * Renders a list of genres.
@@ -25,5 +16,5 @@ export default function GenreList({ genres }: GenreListProps): ReactElement {
                 </Fragment>
             ))}
         </ul>
-    )
+    );
 }
