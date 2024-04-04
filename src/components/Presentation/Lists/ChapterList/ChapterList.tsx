@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './ChapterList.module.sass';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleLeft, faAngleUp, faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChapterList() {
     const [showAll, setShowAll] = useState(false)
