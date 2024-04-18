@@ -1,0 +1,3 @@
+interface MyListsProps {
+    listUrl: string
+}

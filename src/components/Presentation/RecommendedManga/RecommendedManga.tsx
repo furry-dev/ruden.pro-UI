@@ -8,13 +8,13 @@ import GenreList from '@/components/Presentation/Lists/GenreList/GenreList'
 import RecommendedMangaActions from '@/components/Presentation/RecommendedManga/Actions/RecommendedMangaActions'
 import createApolloClient from '@/apollo/apollo-client'
 import Image from 'next/image'
-import { gql } from '@apollo/client'
 import AgeRatingFlag, { GraphQLAgeRating } from '@/components/Presentation/Flags/AgeRatingFlag'
+import { gql } from '@/__generated__';
 
 
 interface Manga {
     id: number
-    age_rating: GraphQLAgeRating
+    ageRating: GraphQLAgeRating
     cover: {
         file: string
     }[]
@@ -30,11 +30,11 @@ interface Manga {
 async function getMangaList(): Promise<Manga[]> {
     const client = createApolloClient()
     const { data } = await client.query({
-        query: gql`
+        query: gql(/*GraphQL*/`
             query Query($langId: [Int]) {
                 mangaList(langId: $langId) {
                     id
-                    age_rating
+                    ageRating
                     cover {
                         file
                     }
@@ -43,10 +43,10 @@ async function getMangaList(): Promise<Manga[]> {
                     }
                 }
             }
-        `
+        `)
     })
 
-    return data.mangaList as Manga[]
+    return data.mangaList as unknown as Manga[]
 }
 
 /**
@@ -60,6 +60,7 @@ export default function RecommendedManga(): React.ReactElement {
     useEffect(() => {
         async function fetchData() {
             const mangaList = await getMangaList()
+            console.log(mangaList)
             setMangas(mangaList)
             setLoading(false)
         }
@@ -90,7 +91,7 @@ export default function RecommendedManga(): React.ReactElement {
                                 height={535}
                                 className={styles['background-image']}
                             />
-                            <AgeRatingFlag className={styles.ageRating} rating={manga.age_rating} />
+                            <AgeRatingFlag className={styles.ageRating} rating={manga.ageRating} />
                         </div>
                     ))}
                 </Carousel>

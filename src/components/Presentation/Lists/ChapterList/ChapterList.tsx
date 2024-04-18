@@ -1,13 +1,14 @@
 "use client"
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import styles from './ChapterList.module.sass';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faAngleUp, faArrowDownShortWide } from '@fortawesome/free-solid-svg-icons';
+import React from "react"
+import Link from "next/link"
+import styles from "./ChapterList.module.sass"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleDown, faAngleUp, faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons"
+import { ChapterListProps } from "@/components/Presentation/Lists/ChapterList/chapter-list.interfaces"
 
-export default function ChapterList() {
-    const [showAll, setShowAll] = useState(false)
+export default function ChapterList(props: ChapterListProps) {
+    const { showAll, setShowAll } = props
 
     const handleClick = () => {
         setShowAll(!showAll)
@@ -31,7 +32,8 @@ export default function ChapterList() {
         <div>
             <div className={styles.chapterListHeader}>
                 <h3>Все главы:</h3>
-                <button className={styles.sortButton}><FontAwesomeIcon icon={faArrowDownShortWide}/> Сортировка</button>
+                <button className={styles.sortButton}><FontAwesomeIcon icon={faArrowDownShortWide} /> Сортировка
+                </button>
             </div>
             <ul className={styles.chapterList}>
                 {renderChapterList()}
@@ -50,5 +52,5 @@ export default function ChapterList() {
                 )}
             </button>
         </div>
-    );
+    )
 }

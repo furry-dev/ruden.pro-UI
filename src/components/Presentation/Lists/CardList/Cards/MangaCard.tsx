@@ -13,7 +13,7 @@ export default function MangaCard({manga}: MangaCardProps): ReactElement {
     return (
         <div key={manga.id} className={styles.mangaCard}>
             <Link href={"/manga/${code}"} className={styles.card} style={{ background: `url('${manga.cover[0].file}') center center / cover` }}></Link>
-            <AgeRatingFlag rating={manga.age_rating} />
+            <AgeRatingFlag rating={manga.ageRating} />
         </div>
     )
 }

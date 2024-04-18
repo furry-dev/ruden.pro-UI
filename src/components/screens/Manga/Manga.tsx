@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import styles from './Manga.module.sass'
-import MangaPageActions from '@/components/screens/Manga/Actions/MangaPageActions'
-import MangaData from '@/components/Presentation/MangaData/MangaData'
-import { MangaProps } from '@/components/screens/Manga/Manga.interface'
+import Image from "next/image"
+import styles from "./Manga.module.sass"
+import MangaPageActions from "@/components/screens/Manga/Actions/MangaPageActions"
+import MangaData from "@/components/screens/Manga/MangaData/MangaData"
+import { MangaProps } from "@/components/screens/Manga/Manga.interface"
 
 
 export default function Manga({params}: MangaProps) {

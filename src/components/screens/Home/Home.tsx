@@ -1,15 +1,16 @@
 import RecommendedManga from "@/components/Presentation/RecommendedManga/RecommendedManga"
 import CardList from "@/components/Presentation/Lists/CardList/CardList"
 import MangaCard from "@/components/Presentation/Lists/CardList/Cards/MangaCard"
-import React, { ReactElement } from 'react'
-import createApolloClient from '@/apollo/apollo-client'
-import { gql } from '@/__generated__'
-
-import styles from './Home.module.sass'
+import React, { ReactElement } from "react"
+import createApolloClient from "@/apollo/apollo-client"
+import { gql } from "@/__generated__"
+import styles from "./Home.module.sass"
+import { MangaCardEntity } from "@/components/Presentation/Lists/CardList/Cards/mangacard.interface"
+import Header from "@/components/Basic/Layouts/Header"
 
 /**
  * Fetches manga data from the server.
- * @returns {Promise<Manga[]>} The manga data fetched from the server.
+ * @returns {Promise<MangaCardEntity[]>} The manga data fetched from the server.
  */
 async function getMangaList(): Promise<MangaCardEntity[]> {
     const client = createApolloClient()
@@ -18,7 +19,7 @@ async function getMangaList(): Promise<MangaCardEntity[]> {
             query GetRecommendedMangas($langId: [Int]) {
                 mangaList(langId: $langId) {
                     id
-                    age_rating
+                    ageRating
                     cover {
                         file
                     }
@@ -27,7 +28,7 @@ async function getMangaList(): Promise<MangaCardEntity[]> {
         `)
     })
 
-    return data.mangaList as MangaCardEntity[]
+    return data.mangaList as unknown as MangaCardEntity[]
 }
 
 /**
@@ -38,13 +39,16 @@ export default async function Home(): Promise<ReactElement> {
     const mangas = await getMangaList()
 
     return (
-        <main className={styles.main}>
-            <RecommendedManga/>
-            <CardList title={"Новинки: "}>
-                {mangas.map((manga) => (
-                    <MangaCard key={manga.id} manga={manga}/>
-                ))}
-            </CardList>
-        </main>
+        <>
+            <Header />
+            <main className={styles.main}>
+                <RecommendedManga/>
+                <CardList title={"Новинки: "}>
+                    {mangas.map((manga) => (
+                        <MangaCard key={manga.id} manga={manga}/>
+                    ))}
+                </CardList>
+            </main>
+        </>
     )
 }

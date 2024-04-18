@@ -1,0 +1,89 @@
+.userBackgroundImage
+  position: fixed
+  top: 0
+  left: 0
+
+  z-index: -1
+
+  width: 100%
+  height: 20vh
+  object-fit: cover
+
+  filter: brightness(0.6)
+
+.main
+  margin-top: 20vh
+  display: flex
+  flex-direction: column
+
+  .userData
+    display: flex
+    flex-direction: column
+    gap: 15px
+
+    .userActions
+      margin-top: calc(-30vw + 4vw)
+
+      display: flex
+      align-items: center
+      justify-content: space-evenly
+
+      .userAvatar
+        width: 30vw
+        height: 30vw
+        object-fit: cover
+        border-radius: 15vw
+
+      .actionsButton
+        border: none
+        outline: none
+        background: none
+
+        .icon
+          color: white
+          height: 30px
+
+    .userName
+      text-align: center
+      font-size: 28px
+
+  .list
+    list-style: none
+
+    .listLink
+      display: flex
+      align-items: center
+      height: 55px
+
+      gap: 1.5rem
+
+      font-size: 16px
+      padding: 0 1rem
+
+      color: white
+      transition: background-color 0.3s ease-out
+
+      &:hover, &:focus
+        background-color: rgba(100, 100, 100, 0.6)
+
+      .linkIcon
+        height: 20px
+        width: 20px
+        color: #888
+
+        display: flex
+        place-content: center
+
+        &.svgLinkIcon
+          fill: #888
+          height: 22px
+          width: 22px
+
+  .section
+    border-top: 10px solid #252527
+
+    .sectionTitle
+      font-size: 14px
+      margin-bottom: 10px
+
+      display: none

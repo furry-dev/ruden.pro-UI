@@ -1,14 +1,10 @@
-import { ReactElement } from 'react'
-import MyListsTabs from '@/components/screens/MyLists/MyListsTabs/MyListsTabs';
+import { ReactElement } from "react"
+import MyLists from "@/components/screens/MyLists/MyLists"
 
 /**
- * My-list page component.
+ * My-list page.
  * @returns {ReactElement} The my-list page ReactElement.
  */
-export default function MyLists(): ReactElement {
-    return (
-        <main>
-            <MyListsTabs />
-        </main>
-    )
+export default function MyListsPage(): ReactElement {
+    return <MyLists />
 }

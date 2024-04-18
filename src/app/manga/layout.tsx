@@ -4,6 +4,7 @@ import "./globals.sass"
 import React from "react"
 
 import Footer from "@/components/Basic/Layouts/Footer"
+import Header from "@/components/Basic/Layouts/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
+          <Header />
           {children}
           <Footer />
       </body>
