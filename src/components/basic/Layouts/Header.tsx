@@ -1,8 +1,8 @@
-import Logo from "@/components/Basic/Logo/Logo";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBell} from "@fortawesome/free-solid-svg-icons";
-import styles from './Header.module.sass'
-import { ReactElement } from 'react';
+import Logo from "@/components/basic/Logo/Logo"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBell } from "@fortawesome/free-solid-svg-icons"
+import styles from "./Header.module.sass"
+import { ReactElement } from "react"
 
 
 /**

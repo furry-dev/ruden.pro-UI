@@ -5,6 +5,7 @@ import { LeadingActions, SwipeableList, SwipeableListItem, SwipeAction, Trailing
 import "react-swipeable-list/dist/styles.css"
 
 import styles from "./MangaSwipeableList.module.sass"
+import ContentPreviewCard from "@/components/global/ContentPreviewCard/ContentPreviewCard"
 
 const leadingActions = () => (
     <LeadingActions>
@@ -26,29 +27,30 @@ const trailingActions = () => (
 )
 
 export default function MangaSwipeableList(props: MangaSwipeableListProps) {
+    const mangas = [...Array(10)]
+
     return (
         <div className={styles.container}>
             <h1>Читаю</h1>
-            <div className={styles.list}>
-                <SwipeableList>
-                    {
-                        [...Array(10)].map((x, i) => (
-                            <SwipeableListItem
-                                key={i}
-                                leadingActions={leadingActions()}
-                                trailingActions={trailingActions()}
-                            >
-                                <div className={styles.manga}>
-                                    Манга {i + 1}
-                                </div>
-                            </SwipeableListItem>
-                        ))
-                    }
-                </SwipeableList>
-            </div>
-            <div className={styles.scrollZone}>
-                scroll zone
-            </div>
+            <SwipeableList className={styles.list}>
+                {
+                    mangas.map((x, i) => (
+                        <SwipeableListItem
+                            key={i}
+                            leadingActions={leadingActions()}
+                            trailingActions={trailingActions()}
+                        >
+                            <ContentPreviewCard
+                                title={"Я отдала свой первый раз своему брату"}
+                                tags={["Романтика", "Школа", "Первый раз"]}
+                                desc={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab animi aperiam dolor, in molestiae optio quidem! Atque commodi doloribus eaque ex, facilis iusto nobis odit officiis quasi repellat saepe, velit?"}
+                                coverURL={"/manga-cover.jpg"}
+                                isLast={(i + 1 === mangas.length)}
+                            />
+                        </SwipeableListItem>
+                    ))
+                }
+            </SwipeableList>
         </div>
     )
 }

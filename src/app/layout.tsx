@@ -3,26 +3,26 @@ import { Inter } from "next/font/google"
 import "./globals.sass"
 import React from "react"
 
-import Footer from "@/components/Basic/Layouts/Footer"
+import Footer from "@/components/basic/Layouts/Footer"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Ruden - Manga",
-  description: "Сайт для чтения манг",
-};
+    title: "Ruden - Manga",
+    description: "Сайт для чтения манг",
+}
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="ru">
-      <body className={inter.className}>
-          {children}
-          <Footer />
-      </body>
-    </html>
-  );
+    return (
+        <html lang="ru">
+            <body className={inter.className}>
+                {children}
+                <Footer />
+            </body>
+        </html>
+    )
 }

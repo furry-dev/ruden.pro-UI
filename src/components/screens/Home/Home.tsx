@@ -1,12 +1,12 @@
-import RecommendedManga from "@/components/Presentation/RecommendedManga/RecommendedManga"
-import CardList from "@/components/Presentation/Lists/CardList/CardList"
-import MangaCard from "@/components/Presentation/Lists/CardList/Cards/MangaCard"
+import RecommendedManga from "@/components/screens/Home/RecommendedManga/RecommendedManga"
+import CardList from "@/components/global/Lists/CardList/CardList"
+import MangaCard from "@/components/global/Lists/CardList/Cards/MangaCard"
 import React, { ReactElement } from "react"
 import createApolloClient from "@/apollo/apollo-client"
 import { gql } from "@/__generated__"
 import styles from "./Home.module.sass"
-import { MangaCardEntity } from "@/components/Presentation/Lists/CardList/Cards/mangacard.interface"
-import Header from "@/components/Basic/Layouts/Header"
+import { MangaCardEntity } from "@/components/global/Lists/CardList/Cards/mangacard.interface"
+import Header from "@/components/basic/Layouts/Header"
 
 /**
  * Fetches manga data from the server.

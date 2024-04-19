@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement } from "react"
 import styles from "./CardList.module.sass"
-import { CardListProps } from '@/components/Presentation/Lists/CardList/CardList.interface';
+import { CardListProps } from "@/components/global/Lists/CardList/CardList.interface"
 
 /**
  * Represents a list of cards component.

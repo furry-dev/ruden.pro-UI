@@ -1,5 +1,5 @@
-import styles from './MangaDataGenres.module.sass';
-import CategoryLink from '@/components/Presentation/Links/Category/CategoryLink'
+import styles from "./MangaDataGenres.module.sass"
+import CategoryLink from "@/components/global/Links/Category/CategoryLink"
 
 export default function MangaDataGenres() {
     return (

@@ -5,7 +5,7 @@ import Link from "next/link"
 import styles from "./ChapterList.module.sass"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleDown, faAngleUp, faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons"
-import { ChapterListProps } from "@/components/Presentation/Lists/ChapterList/chapter-list.interfaces"
+import { ChapterListProps } from "@/components/global/Lists/ChapterList/chapter-list.interfaces"
 
 export default function ChapterList(props: ChapterListProps) {
     const { showAll, setShowAll } = props

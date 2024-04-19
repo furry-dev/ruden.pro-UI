@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./MangaData.module.sass"
-import ChapterList from "@/components/Presentation/Lists/ChapterList/ChapterList"
+import ChapterList from "@/components/global/Lists/ChapterList/ChapterList"
 import SwipeableViews from "react-swipeable-views"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"

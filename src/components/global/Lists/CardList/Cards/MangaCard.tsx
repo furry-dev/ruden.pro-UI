@@ -1,8 +1,8 @@
 import styles from "./MangaCard.module.sass"
-import React, { ReactElement } from 'react'
-import AgeRatingFlag from '@/components/Presentation/Flags/AgeRatingFlag'
-import Link from 'next/link'
-import { MangaCardProps } from '@/components/Presentation/Lists/CardList/Cards/mangacard.interface'
+import React, { ReactElement } from "react"
+import AgeRatingFlag from "@/components/global/Flags/AgeRatingFlag"
+import Link from "next/link"
+import { MangaCardProps } from "@/components/global/Lists/CardList/Cards/mangacard.interface"
 
 /**
  * Renders the card component.

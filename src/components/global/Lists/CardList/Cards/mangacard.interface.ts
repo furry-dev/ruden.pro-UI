@@ -1,4 +1,4 @@
-import { GraphQLAgeRating } from '@/components/Presentation/Flags/AgeRatingFlag';
+import { GraphQLAgeRating } from "@/components/global/Flags/AgeRatingFlag"
 
 /**
  * Represents a card component.

@@ -1,15 +1,15 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Carousel } from 'react-responsive-carousel'
-import styles from './RecommendedManga.module.sass'
-import GenreList from '@/components/Presentation/Lists/GenreList/GenreList'
-import RecommendedMangaActions from '@/components/Presentation/RecommendedManga/Actions/RecommendedMangaActions'
-import createApolloClient from '@/apollo/apollo-client'
-import Image from 'next/image'
-import AgeRatingFlag, { GraphQLAgeRating } from '@/components/Presentation/Flags/AgeRatingFlag'
-import { gql } from '@/__generated__';
+import React, { useEffect, useState } from "react"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from "react-responsive-carousel"
+import styles from "./RecommendedManga.module.sass"
+import GenreList from "@/components/global/Lists/GenreList/GenreList"
+import RecommendedMangaActions from "@/components/screens/Home/RecommendedManga/Actions/RecommendedMangaActions"
+import createApolloClient from "@/apollo/apollo-client"
+import Image from "next/image"
+import AgeRatingFlag, { GraphQLAgeRating } from "@/components/global/Flags/AgeRatingFlag"
+import { gql } from "@/__generated__"
 
 
 interface Manga {
@@ -68,7 +68,7 @@ export default function RecommendedManga(): React.ReactElement {
         void fetchData()
     }, [])
 
-    const genres: string[] = ['Повседневность', 'Романтика', 'Школа']
+    const genres: string[] = ["Повседневность", "Романтика", "Школа"]
 
     return (
         <div className={styles.recommended}>
@@ -89,7 +89,7 @@ export default function RecommendedManga(): React.ReactElement {
                                 alt={manga.title[0].text}
                                 width={375}
                                 height={535}
-                                className={styles['background-image']}
+                                className={styles["background-image"]}
                             />
                             <AgeRatingFlag className={styles.ageRating} rating={manga.ageRating} />
                         </div>
