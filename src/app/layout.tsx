@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Open_Sans } from "next/font/google"
 import "./globals.sass"
 import React from "react"
 
 import Footer from "@/components/basic/Layouts/Footer"
+import {Toaster} from "react-hot-toast"
 
-const inter = Inter({ subsets: ["latin"] })
+const openSans = Open_Sans({subsets: ['cyrillic', 'latin']})
 
 export const metadata: Metadata = {
     title: "Ruden - Manga",
@@ -19,7 +20,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ru">
-            <body className={inter.className}>
+            <body className={openSans.className}>
+                <Toaster />
                 {children}
                 <Footer />
             </body>

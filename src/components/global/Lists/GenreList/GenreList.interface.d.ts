@@ -4,5 +4,6 @@
  * @param {string[]} genres - An array of genre strings.
  */
 interface GenreListProps {
-    genres: string[];
+    genres: string[]
+    className?: string
 }

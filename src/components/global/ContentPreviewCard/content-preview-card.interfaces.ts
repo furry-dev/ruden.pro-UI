@@ -3,5 +3,6 @@ interface ContentPreviewCardProps {
     title: string,
     desc: string,
     tags?: string[],
-    isLast?: boolean
+    isLast?: boolean,
+    link?: string
 }

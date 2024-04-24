@@ -13,8 +13,13 @@
 
   padding: 10px 20px
 
-  color: white
   background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 100%)
 
   .notify
     height: 22px
+
+    color: var(--icon-button-color)
+    transition: color 0.3s ease
+
+    &:hover
+      color: var(--primary-second)

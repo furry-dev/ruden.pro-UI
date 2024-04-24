@@ -5,7 +5,6 @@ $borderRadius: 15px
   position: relative
 
   width: 100%
-  height: 150px
 
   margin-bottom: 20px
 
@@ -14,53 +13,71 @@ $borderRadius: 15px
 
     position: absolute
     bottom: -10px
-    left: 0
-    right: 0
+    left: -100vw
+    width: 300vw
 
     height: 1px
 
-    background-color: #c4c4c4
+    background-color: var(--underline)
 
   &.last
     margin-bottom: 0
     &::after
       content: none
 
-  .cover
-    width: auto
-    height: auto
-    object-fit: cover
+  .coverLink
+    display: flex
 
-    border-top-left-radius: $borderRadius
-    border-bottom-left-radius: $borderRadius
+    .cover
+      width: auto
+      height: auto
+      object-fit: cover
+
+      border-top-left-radius: $borderRadius
+      border-bottom-left-radius: $borderRadius
 
   .right
-    padding: 15px
-    background-color: #252527
+    height: min-content
+    padding: 10px 15px
+    background-color: var(--overlay)
 
     overflow: hidden
 
     border-top-right-radius: $borderRadius
     border-bottom-right-radius: $borderRadius
 
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
     .title
       font-size: 18px
+
+      display: -webkit-box
+      -webkit-line-clamp: 2
+      -webkit-box-orient: vertical
+      overflow: hidden
 
     .tags
       font-size: 12px
 
       padding: 3px
-      margin: 5px 0
+      margin: 10px 0
 
       border-top: 1px solid #c4c4c4
       border-bottom: 1px solid #c4c4c4
 
       display: flex
+      flex-wrap: wrap
+      justify-content: space-around
       gap: 7px
+
+      max-height: 45px
 
     .desc
       font-size: 15px
-      flex: 1 1 auto
 
+      display: -webkit-box
+      -webkit-line-clamp: 2
+      -webkit-box-orient: vertical
       overflow: hidden
-      text-overflow: ellipsis

@@ -51,11 +51,11 @@ export default function MyLists(): ReactElement {
     return (
         <main className={styles.main}>
             <SwipeableViews disabled={true} className={styles.listsView} onChangeIndex={handleSwipe} index={tabIndex}>
-                <MangaSwipeableList tab={null} />
-                <div>В планах</div>
-                <div>Прочитано</div>
-                <div>Брошено</div>
-                <div>Любимое</div>
+                <MangaSwipeableList tab={"reading"} />
+                <MangaSwipeableList tab={"planned"} />
+                <MangaSwipeableList tab={"read"} />
+                <MangaSwipeableList tab={"abandoned"} />
+                <MangaSwipeableList tab={"favorite"} />
             </SwipeableViews>
             <div {...handlers}>
                 <MyListsTabs className={styles.listsTabs} activeTab={tab} />

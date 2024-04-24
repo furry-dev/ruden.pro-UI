@@ -97,9 +97,7 @@ export default function RecommendedManga(): React.ReactElement {
                 </Carousel>
             )}
             <div className={styles.bottom}>
-                <div className={styles.meta}>
-                    <GenreList genres={genres} />
-                </div>
+                <GenreList className={styles.genres} genres={genres} />
                 <RecommendedMangaActions />
             </div>
         </div>

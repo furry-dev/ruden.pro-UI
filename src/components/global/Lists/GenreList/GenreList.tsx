@@ -6,9 +6,9 @@ import { Fragment, ReactElement } from 'react';
  * @param {GenreListProps} props - The props object.
  * @returns {ReactElement} The genre list ReactElement.
  */
-export default function GenreList({ genres }: GenreListProps): ReactElement {
+export default function GenreList({ genres, className }: GenreListProps): ReactElement {
     return (
-        <ul className={styles.genres}>
+        <ul className={`${styles.genres} ${className}`}>
             {genres.map((genre, index) => (
                 <Fragment key={index}>
                     <li className={styles.genre}>{genre}</li>
