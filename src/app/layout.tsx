@@ -1,12 +1,13 @@
-import type { Metadata } from "next"
-import { Open_Sans } from "next/font/google"
+import type {Metadata} from "next"
+import {Open_Sans} from "next/font/google"
 import "./globals.sass"
 import React from "react"
 
 import Footer from "@/components/basic/Layouts/Footer"
 import {Toaster} from "react-hot-toast"
+import {ThemeLoader} from "@/components/screens/Settings/SetTheme/ThemeLoader"
 
-const openSans = Open_Sans({subsets: ['cyrillic', 'latin']})
+const openSans = Open_Sans({subsets: ["cyrillic", "latin"]})
 
 export const metadata: Metadata = {
     title: "Ruden - Manga",
@@ -16,14 +17,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru">
+        <html lang="ru" data-theme={"dark"}>
             <body className={openSans.className}>
-                <Toaster />
+                <Toaster/>
                 {children}
-                <Footer />
+                <Footer/>
+                <ThemeLoader/>
             </body>
         </html>
     )

@@ -11,8 +11,8 @@ import { MangaCardProps } from "@/components/global/Lists/CardList/Cards/mangaca
  */
 export default function MangaCard({manga}: MangaCardProps): ReactElement {
     return (
-        <div key={manga.id} className={styles.mangaCard}>
-            <Link href={"/manga/${code}"} className={styles.card} style={{ background: `url('${manga.cover[0].file}') center center / cover` }}></Link>
+        <div key={manga._id} className={styles.mangaCard}>
+            <Link href={"/manga/${code}"} className={styles.card} style={{ background: `url('${manga.covers[0].imagePath}') center center / cover` }}></Link>
             <AgeRatingFlag rating={manga.ageRating} />
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import React, {ReactElement} from "react"
 import Account from "@/components/screens/Account/Account"
 
 
@@ -7,5 +7,5 @@ import Account from "@/components/screens/Account/Account"
  * @returns {Promise<ReactElement>} The home page ReactElement.
  */
 export default async function HomePage(): Promise<ReactElement> {
-    return <Account />
+    return <Account/>
 }

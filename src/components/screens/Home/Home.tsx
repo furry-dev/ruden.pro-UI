@@ -10,25 +10,25 @@ import Header from "@/components/basic/Layouts/Header"
 
 /**
  * Fetches manga data from the server.
- * @returns {Promise<MangaCardEntity[]>} The manga data fetched from the server.
- */
-async function getMangaList(): Promise<MangaCardEntity[]> {
+*/
+async function getMangaList() {
     const client = createApolloClient()
     const { data } = await client.query({
         query: gql(/* GraphQL */`
-            query GetRecommendedMangas($langId: [Int]) {
-                mangaList(langId: $langId) {
-                    id
+            query GetRecommendedMangas($fieldsFilterLangCodes: [String!]) {
+                mangas(fieldsFilterLangCodes: $fieldsFilterLangCodes) {
+                    _id
                     ageRating
-                    cover {
-                        file
+                    covers {
+                        lang,
+                        imagePath
                     }
                 }
             }
         `)
     })
 
-    return data.mangaList as unknown as MangaCardEntity[]
+    return data.mangas
 }
 
 /**
@@ -45,7 +45,7 @@ export default async function Home(): Promise<ReactElement> {
                 <RecommendedManga/>
                 <CardList title={"Новинки: "}>
                     {mangas.map((manga) => (
-                        <MangaCard key={manga.id} manga={manga}/>
+                        <MangaCard key={manga._id} manga={manga}/>
                     ))}
                 </CardList>
             </main>

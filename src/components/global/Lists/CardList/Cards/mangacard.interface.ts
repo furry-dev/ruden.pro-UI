@@ -7,10 +7,10 @@ import { GraphQLAgeRating } from "@/components/global/Flags/AgeRatingFlag"
  * @param {{file: string}[]} url - The URL link for the card.
  */
 export interface MangaCardEntity {
-    id: number;
+    _id: string;
     ageRating: GraphQLAgeRating;
-    cover: {
-        file: string
+    covers: {
+        imagePath: string
     }[];
 }
 

@@ -1,13 +1,13 @@
 import style from './AgeRatingFlag.module.sass'
 
-export type GraphQLAgeRating = "R_18" | "R_16" |"R_12"
+export type GraphQLAgeRating = "R_18" | "R_16" |"R_12" | "R_H"
 
 interface Props {
     className?: string,
     rating: GraphQLAgeRating
 }
 
-export function convertAgeRating(rating: GraphQLAgeRating): string {
+export function convertAgeRating(rating: GraphQLAgeRating) {
     switch (rating) {
         case 'R_18':
             return "18+"
@@ -15,10 +15,12 @@ export function convertAgeRating(rating: GraphQLAgeRating): string {
             return "16+"
         case 'R_12':
             return "12+"
+        default:
+            return "H18+"
     }
 }
 
-export function convertAgeRating2color(rating: GraphQLAgeRating): string {
+export function convertAgeRating2color(rating: GraphQLAgeRating) {
     switch (rating) {
         case 'R_18':
             return "rgba(255, 0, 0, 0.5)"
@@ -26,6 +28,8 @@ export function convertAgeRating2color(rating: GraphQLAgeRating): string {
             return "rgba(255, 215, 0, 0.5)"
         case 'R_12':
             return "rgba(0, 170, 0, 0.5)"
+        default:
+            return "rgba(255, 0, 0, 0.5)"
     }
 }
 

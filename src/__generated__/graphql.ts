@@ -16,175 +16,279 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
-export enum AgeRating {
-  R_12 = 'R_12',
-  R_16 = 'R_16',
-  R_18 = 'R_18'
-}
-
-export type CoverInput = {
-  file: Scalars['String']['input'];
-  lang: Scalars['Int']['input'];
+export type CreateGenreInput = {
+  /** Manga titles */
+  names: Array<LocalizedStrDto>;
 };
 
-export type DescriptionInput = {
-  lang: Scalars['Int']['input'];
+export type CreateMangaInput = {
+  /** Manga age rating */
+  ageRating: MangaAgeRatingEnum;
+  /** Manga people _id list */
+  artists: Array<Scalars['String']['input']>;
+  /** Manga people _id list */
+  authors: Array<Scalars['String']['input']>;
+  /** Manga descriptions */
+  covers: Array<LocalizedImageDto>;
+  /** Manga descriptions */
+  descriptions: Array<LocalizedStrDto>;
+  /** Manga genres _id list */
+  genres: Array<Scalars['String']['input']>;
+  /** Manga status */
+  status: MangaStatusEnum;
+  /** Manga titles */
+  titles: Array<LocalizedStrDto>;
+  /** Manga year */
+  year: Scalars['Int']['input'];
+};
+
+export type CreatePersonInput = {
+  avatar?: InputMaybe<Scalars['String']['input']>;
+  /** Manga descriptions */
+  bio: Array<LocalizedStrDto>;
+  /** Year of birth */
+  birthYear?: InputMaybe<Scalars['Int']['input']>;
+  /** Manga titles */
+  name: Array<LocalizedStrDto>;
+  /** Place where person leave */
+  place?: InputMaybe<Scalars['String']['input']>;
+  /** Manga descriptions */
+  socialLinks: Array<LabeledStrDto>;
+};
+
+export type GenreEntity = {
+  __typename?: 'GenreEntity';
+  _id: Scalars['String']['output'];
+  names: Array<LocalizedStrEntity>;
+};
+
+export type LabeledStrDto = {
+  /** Lang code */
+  label: Scalars['String']['input'];
+  /** Some text */
   text: Scalars['String']['input'];
 };
 
-export type Language = {
-  __typename?: 'Language';
-  id: Scalars['Int']['output'];
-  name: Scalars['String']['output'];
-};
-
-export type Manga = {
-  __typename?: 'Manga';
-  added: Scalars['String']['output'];
-  ageRating: Scalars['String']['output'];
-  artist: Array<Maybe<People>>;
-  author: Array<Maybe<People>>;
-  cover: Array<Maybe<MangaCover>>;
-  description: Array<Maybe<MangaDescription>>;
-  id: Scalars['Int']['output'];
-  publisher: Array<Maybe<Publisher>>;
-  title: Array<Maybe<MangaTitle>>;
-  year?: Maybe<Scalars['Int']['output']>;
-};
-
-export type MangaCover = {
-  __typename?: 'MangaCover';
-  file: Scalars['String']['output'];
-  id: Scalars['Int']['output'];
-  lang: Scalars['Int']['output'];
-  langCodes?: Maybe<Language>;
-  mangaId: Scalars['Int']['output'];
-};
-
-export type MangaDescription = {
-  __typename?: 'MangaDescription';
-  id: Scalars['Int']['output'];
-  lang: Scalars['Int']['output'];
-  langCodes?: Maybe<Language>;
-  mangaId: Scalars['Int']['output'];
+export type LabeledStrEntity = {
+  __typename?: 'LabeledStrEntity';
+  label: Scalars['String']['output'];
   text: Scalars['String']['output'];
 };
 
-export enum MangaSorting {
-  LatestUpdates = 'LATEST_UPDATES',
-  New = 'NEW',
-  Popularity = 'POPULARITY'
+export type LocalizedImageDto = {
+  /** Path to image */
+  imagePath: Scalars['String']['input'];
+  /** Lang code */
+  lang: Scalars['String']['input'];
+};
+
+export type LocalizedImageEntity = {
+  __typename?: 'LocalizedImageEntity';
+  imagePath: Scalars['String']['output'];
+  lang: Scalars['String']['output'];
+};
+
+export type LocalizedStrDto = {
+  /** Lang code */
+  lang: Scalars['String']['input'];
+  /** Some text */
+  text: Scalars['String']['input'];
+};
+
+export type LocalizedStrEntity = {
+  __typename?: 'LocalizedStrEntity';
+  lang: Scalars['String']['output'];
+  text: Scalars['String']['output'];
+};
+
+export enum MangaAgeRatingEnum {
+  R_12 = 'R_12',
+  R_16 = 'R_16',
+  R_18 = 'R_18',
+  RH = 'R_H'
 }
 
-export enum MangaStatus {
-  Finish = 'finish',
+export type MangaEntity = {
+  __typename?: 'MangaEntity';
+  _id: Scalars['String']['output'];
+  ageRating: MangaAgeRatingEnum;
+  artists: Array<PersonEntity>;
+  authors: Array<PersonEntity>;
+  covers: Array<LocalizedImageEntity>;
+  descriptions: Array<LocalizedStrEntity>;
+  genres: Array<GenreEntity>;
+  status: MangaStatusEnum;
+  titles: Array<LocalizedStrEntity>;
+  year: Scalars['Int']['output'];
+};
+
+export enum MangaStatusEnum {
+  Finished = 'finished',
   Ongoing = 'ongoing',
-  Release = 'release'
+  Released = 'released'
 }
-
-export type MangaTitle = {
-  __typename?: 'MangaTitle';
-  id: Scalars['Int']['output'];
-  lang: Scalars['Int']['output'];
-  langCodes?: Maybe<Language>;
-  mangaId: Scalars['Int']['output'];
-  text: Scalars['String']['output'];
-};
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createLanguage: Language;
-  createManga: Manga;
-  createPeople: People;
-  createPublisher: Publisher;
+  createGenre: GenreEntity;
+  createManga: MangaEntity;
+  createPerson: PersonEntity;
+  removeGenre: GenreEntity;
+  removeManga: MangaEntity;
+  removePerson: PersonEntity;
+  updateGenre: GenreEntity;
+  updateManga: MangaEntity;
+  updatePerson: PersonEntity;
 };
 
 
-export type MutationCreateLanguageArgs = {
-  name: Scalars['String']['input'];
+export type MutationCreateGenreArgs = {
+  createGenreInput: CreateGenreInput;
 };
 
 
 export type MutationCreateMangaArgs = {
-  age_rating: AgeRating;
-  artist?: InputMaybe<Array<PeopleInput>>;
-  author?: InputMaybe<Array<PeopleInput>>;
-  cover: Array<CoverInput>;
-  description: Array<DescriptionInput>;
-  publisher?: InputMaybe<Array<PublisherInput>>;
-  status: MangaStatus;
-  title: Array<TitleInput>;
-  year: Scalars['Int']['input'];
+  createMangaInput: CreateMangaInput;
 };
 
 
-export type MutationCreatePeopleArgs = {
-  name: Scalars['String']['input'];
+export type MutationCreatePersonArgs = {
+  createPersonInput: CreatePersonInput;
 };
 
 
-export type MutationCreatePublisherArgs = {
-  name: Scalars['String']['input'];
+export type MutationRemoveGenreArgs = {
+  id: Scalars['String']['input'];
 };
 
-export type People = {
-  __typename?: 'People';
-  id: Scalars['Int']['output'];
-  name: Scalars['String']['output'];
+
+export type MutationRemoveMangaArgs = {
+  id: Scalars['String']['input'];
 };
 
-export type PeopleInput = {
-  id: Scalars['Int']['input'];
+
+export type MutationRemovePersonArgs = {
+  id: Scalars['String']['input'];
 };
 
-export type Publisher = {
-  __typename?: 'Publisher';
-  id: Scalars['Int']['output'];
-  name: Scalars['String']['output'];
+
+export type MutationUpdateGenreArgs = {
+  updateGenreInput: UpdateGenreInput;
 };
 
-export type PublisherInput = {
-  id: Scalars['Int']['input'];
+
+export type MutationUpdateMangaArgs = {
+  updateMangaInput: UpdateMangaInput;
+};
+
+
+export type MutationUpdatePersonArgs = {
+  updatePersonInput: UpdatePersonInput;
+};
+
+export type PersonEntity = {
+  __typename?: 'PersonEntity';
+  _id: Scalars['String']['output'];
+  avatar?: Maybe<Scalars['String']['output']>;
+  bio: Array<LocalizedStrEntity>;
+  birthYear?: Maybe<Scalars['Int']['output']>;
+  name: Array<LocalizedStrEntity>;
+  place?: Maybe<Scalars['String']['output']>;
+  socialLinks: Array<LabeledStrEntity>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  mangaList: Array<Manga>;
+  genre: GenreEntity;
+  genres: Array<GenreEntity>;
+  getHello: Scalars['String']['output'];
+  manga: MangaEntity;
+  mangas: Array<MangaEntity>;
+  people: Array<PersonEntity>;
+  person: PersonEntity;
 };
 
 
-export type QueryMangaListArgs = {
-  direction?: InputMaybe<SortingDirection>;
-  genres?: InputMaybe<Scalars['String']['input']>;
-  langId?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  page?: InputMaybe<Scalars['Int']['input']>;
-  sorting?: InputMaybe<MangaSorting>;
+export type QueryGenreArgs = {
+  id: Scalars['String']['input'];
 };
 
-export enum SortingDirection {
-  Desc = 'DESC'
-}
 
-export type TitleInput = {
-  lang: Scalars['Int']['input'];
-  text: Scalars['String']['input'];
+export type QueryMangaArgs = {
+  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']>>;
+  id: Scalars['String']['input'];
 };
 
-export type QueryQueryVariables = Exact<{
-  langId?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>> | InputMaybe<Scalars['Int']['input']>>;
-}>;
+
+export type QueryMangasArgs = {
+  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']>>;
+  genreIds?: InputMaybe<Array<Scalars['String']['input']>>;
+  limit?: InputMaybe<Scalars['Float']['input']>;
+  page?: InputMaybe<Scalars['Float']['input']>;
+};
 
 
-export type QueryQuery = { __typename?: 'Query', mangaList: Array<{ __typename?: 'Manga', id: number, ageRating: string, cover: Array<{ __typename?: 'MangaCover', file: string } | null>, title: Array<{ __typename?: 'MangaTitle', text: string } | null> }> };
+export type QueryPersonArgs = {
+  id: Scalars['String']['input'];
+};
+
+export type UpdateGenreInput = {
+  _id: Scalars['String']['input'];
+  /** Manga titles */
+  names?: InputMaybe<Array<LocalizedStrDto>>;
+};
+
+export type UpdateMangaInput = {
+  _id: Scalars['String']['input'];
+  /** Manga age rating */
+  ageRating?: InputMaybe<MangaAgeRatingEnum>;
+  /** Manga people _id list */
+  artists?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Manga people _id list */
+  authors?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Manga descriptions */
+  covers?: InputMaybe<Array<LocalizedImageDto>>;
+  /** Manga descriptions */
+  descriptions?: InputMaybe<Array<LocalizedStrDto>>;
+  /** Manga genres _id list */
+  genres?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Manga status */
+  status?: InputMaybe<MangaStatusEnum>;
+  /** Manga titles */
+  titles?: InputMaybe<Array<LocalizedStrDto>>;
+  /** Manga year */
+  year?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type UpdatePersonInput = {
+  _id: Scalars['String']['input'];
+  avatar?: InputMaybe<Scalars['String']['input']>;
+  /** Manga descriptions */
+  bio?: InputMaybe<Array<LocalizedStrDto>>;
+  /** Year of birth */
+  birthYear?: InputMaybe<Scalars['Int']['input']>;
+  /** Manga titles */
+  name?: InputMaybe<Array<LocalizedStrDto>>;
+  /** Place where person leave */
+  place?: InputMaybe<Scalars['String']['input']>;
+  /** Manga descriptions */
+  socialLinks?: InputMaybe<Array<LabeledStrDto>>;
+};
 
 export type GetRecommendedMangasQueryVariables = Exact<{
-  langId?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>> | InputMaybe<Scalars['Int']['input']>>;
+  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
 }>;
 
 
-export type GetRecommendedMangasQuery = { __typename?: 'Query', mangaList: Array<{ __typename?: 'Manga', id: number, ageRating: string, cover: Array<{ __typename?: 'MangaCover', file: string } | null> }> };
+export type GetRecommendedMangasQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }> }> };
+
+export type QueryQueryVariables = Exact<{
+  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+}>;
 
 
-export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"langId"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangaList"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"langId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"langId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file"}}]}},{"kind":"Field","name":{"kind":"Name","value":"title"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;
-export const GetRecommendedMangasDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetRecommendedMangas"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"langId"}},"type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangaList"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"langId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"langId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"cover"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"file"}}]}}]}}]}}]} as unknown as DocumentNode<GetRecommendedMangasQuery, GetRecommendedMangasQueryVariables>;
+export type QueryQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }>, titles: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, genres: Array<{ __typename?: 'GenreEntity', names: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }> }> };
+
+
+export const GetRecommendedMangasDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetRecommendedMangas"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}}]}}]}}]} as unknown as DocumentNode<GetRecommendedMangasQuery, GetRecommendedMangasQueryVariables>;
+export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"titles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genres"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"names"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;
