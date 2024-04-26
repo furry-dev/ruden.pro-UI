@@ -70,7 +70,7 @@ export default function RecommendedManga({mangas}: RecommendedMangaProps): React
                 circular={true}
                 panelsPerView={1}
                 plugins={plugins}
-                onChanged={(e) => carouselChangeHandler(e.index)}
+                onWillChange={(e) => carouselChangeHandler(e.index)}
             >
                 {mangas.map((manga) => (
                     <>
