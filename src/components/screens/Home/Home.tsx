@@ -32,6 +32,7 @@ async function getMangaList() {
                             text
                         }
                     }
+                    slug
                 }
             }
         `)

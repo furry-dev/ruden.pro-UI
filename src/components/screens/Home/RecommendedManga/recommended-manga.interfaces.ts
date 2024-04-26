@@ -19,6 +19,7 @@ export interface Manga {
         text: string
     }[]
     genres: Genre[]
+    slug: string
 }
 
 export interface RecommendedMangaProps {

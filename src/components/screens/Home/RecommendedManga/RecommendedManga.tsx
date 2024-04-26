@@ -89,7 +89,7 @@ export default function RecommendedManga({mangas}: RecommendedMangaProps): React
             </Flicking>
             <div className={styles.bottom}>
                 <GenreList className={styles.genres} genres={getGenresFromManga("rus", mangas[currentIndex])}/>
-                <RecommendedMangaActions/>
+                <RecommendedMangaActions manga={mangas[currentIndex]}/>
             </div>
             <Ambilight
                 imagesUrls={mangaCovers}

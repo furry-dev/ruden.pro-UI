@@ -1,5 +1,5 @@
 export interface MangaProps {
     params: {
-        mangaCode: string
+        slug: string
     }
 }

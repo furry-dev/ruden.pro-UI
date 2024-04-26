@@ -34,6 +34,7 @@ export type CreateMangaInput = {
   descriptions: Array<LocalizedStrDto>;
   /** Manga genres _id list */
   genres: Array<Scalars['String']['input']>;
+  slug: Scalars['String']['input'];
   /** Manga status */
   status: MangaStatusEnum;
   /** Manga titles */
@@ -117,6 +118,7 @@ export type MangaEntity = {
   covers: Array<LocalizedImageEntity>;
   descriptions: Array<LocalizedStrEntity>;
   genres: Array<GenreEntity>;
+  slug: Scalars['String']['output'];
   status: MangaStatusEnum;
   titles: Array<LocalizedStrEntity>;
   year: Scalars['Int']['output'];
@@ -252,6 +254,7 @@ export type UpdateMangaInput = {
   descriptions?: InputMaybe<Array<LocalizedStrDto>>;
   /** Manga genres _id list */
   genres?: InputMaybe<Array<Scalars['String']['input']>>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   /** Manga status */
   status?: InputMaybe<MangaStatusEnum>;
   /** Manga titles */
@@ -275,20 +278,12 @@ export type UpdatePersonInput = {
   socialLinks?: InputMaybe<Array<LabeledStrDto>>;
 };
 
-export type GetRecommendedMangasQueryVariables = Exact<{
-  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
-}>;
-
-
-export type GetRecommendedMangasQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }> }> };
-
 export type QueryQueryVariables = Exact<{
   fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
 }>;
 
 
-export type QueryQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }>, titles: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, genres: Array<{ __typename?: 'GenreEntity', names: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }> }> };
+export type QueryQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, slug: string, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }>, titles: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, genres: Array<{ __typename?: 'GenreEntity', names: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }> }> };
 
 
-export const GetRecommendedMangasDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetRecommendedMangas"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}}]}}]}}]} as unknown as DocumentNode<GetRecommendedMangasQuery, GetRecommendedMangasQueryVariables>;
-export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"titles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genres"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"names"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;
+export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"titles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genres"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"names"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;
