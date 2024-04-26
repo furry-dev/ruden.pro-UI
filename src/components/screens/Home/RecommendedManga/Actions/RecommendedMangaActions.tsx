@@ -18,10 +18,11 @@ export default function RecommendedMangaActions({manga}: RecommendedMangaActions
                 <FontAwesomeIcon icon={faPlus} className={styles.icon}/>
                 Добавить
             </button>
-            <button className={`${styles["read-button"]} ${styles.button}`}>
+            {/*TODO: get first chapter number*/}
+            <Link href={`/manga/${manga.slug}/first-chapter`} className={`${styles["read-button"]} ${styles.button}`}>
                 <FontAwesomeIcon icon={faBookOpen} className={styles.icon}/>
                 Читать
-            </button>
+            </Link>
             <Link href={`/manga/${manga.slug}`} className={`${styles.button} ${styles["actions-button"]}`}>
                 <FontAwesomeIcon icon={faCircleInfo} className={styles.icon}/>
                 Подробнее

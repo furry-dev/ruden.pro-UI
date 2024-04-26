@@ -1,18 +1,4 @@
-import { GraphQLAgeRating } from "@/components/global/Flags/AgeRatingFlag"
-
-/**
- * Represents a card component.
- * @param {number} id - The image source for the card.
- * @param {GraphQLAgeRating} age_rating - The image source for the card.
- * @param {{file: string}[]} url - The URL link for the card.
- */
-export interface MangaCardEntity {
-    _id: string;
-    ageRating: GraphQLAgeRating;
-    covers: {
-        imagePath: string
-    }[];
-}
+import {Manga} from "@/components/screens/Home/RecommendedManga/recommended-manga.interfaces"
 
 /**
  * Represents a MangaCard component props.
@@ -20,5 +6,5 @@ export interface MangaCardEntity {
  * @param {string} url - The URL link for the card.
  */
 export interface MangaCardProps {
-    manga: MangaCardEntity;
+    manga: Manga
 }
