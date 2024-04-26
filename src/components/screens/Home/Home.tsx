@@ -1,27 +1,36 @@
 import RecommendedManga from "@/components/screens/Home/RecommendedManga/RecommendedManga"
 import CardList from "@/components/global/Lists/CardList/CardList"
 import MangaCard from "@/components/global/Lists/CardList/Cards/MangaCard"
-import React, { ReactElement } from "react"
+import React, {ReactElement} from "react"
 import createApolloClient from "@/apollo/apollo-client"
-import { gql } from "@/__generated__"
+import {gql} from "@/__generated__"
 import styles from "./Home.module.sass"
-import { MangaCardEntity } from "@/components/global/Lists/CardList/Cards/mangacard.interface"
 import Header from "@/components/basic/Layouts/Header"
 
 /**
  * Fetches manga data from the server.
-*/
+ */
 async function getMangaList() {
     const client = createApolloClient()
-    const { data } = await client.query({
-        query: gql(/* GraphQL */`
-            query GetRecommendedMangas($fieldsFilterLangCodes: [String!]) {
+    const {data} = await client.query({
+        query: gql(/*GraphQL*/`
+            query Query($fieldsFilterLangCodes: [String!]) {
                 mangas(fieldsFilterLangCodes: $fieldsFilterLangCodes) {
                     _id
                     ageRating
                     covers {
                         lang,
                         imagePath
+                    }
+                    titles {
+                        lang,
+                        text
+                    }
+                    genres {
+                        names {
+                            lang,
+                            text
+                        }
                     }
                 }
             }
@@ -40,9 +49,9 @@ export default async function Home(): Promise<ReactElement> {
 
     return (
         <>
-            <Header />
+            <Header/>
             <main className={styles.main}>
-                <RecommendedManga/>
+                <RecommendedManga mangas={mangas}/>
                 <CardList title={"Новинки: "}>
                     {mangas.map((manga) => (
                         <MangaCard key={manga._id} manga={manga}/>

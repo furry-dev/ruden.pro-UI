@@ -1,37 +1,22 @@
 "use client"
 
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import {Carousel} from "react-responsive-carousel"
 import styles from "./RecommendedManga.module.sass"
 import GenreList from "@/components/global/Lists/GenreList/GenreList"
 import RecommendedMangaActions from "@/components/screens/Home/RecommendedManga/Actions/RecommendedMangaActions"
-import createApolloClient from "@/apollo/apollo-client"
-import Image from "next/image"
-import AgeRatingFlag, {GraphQLAgeRating} from "@/components/global/Flags/AgeRatingFlag"
-import {gql} from "@/__generated__"
+import AgeRatingFlag from "@/components/global/Flags/AgeRatingFlag"
 import Ambilight from "@/components/global/Ambilight/Ambilight"
+import Image from "next/image"
+import Flicking from "@egjs/react-flicking"
 
-interface Genre {
-    names: {
-        lang: string
-        text: string
-    }[]
-}
-
-interface Manga {
-    _id: string
-    ageRating: GraphQLAgeRating
-    covers: {
-        lang: string
-        imagePath: string
-    }[]
-    titles: {
-        lang: string
-        text: string
-    }[]
-    genres: Genre[]
-}
+import {AutoPlay} from "@egjs/flicking-plugins"
+import "@egjs/react-flicking/dist/flicking.css"
+import {
+    Genre,
+    Manga,
+    RecommendedMangaProps
+} from "@/components/screens/Home/RecommendedManga/recommended-manga.interfaces"
 
 function getGenreNames(langCode: string, genreList: Genre[]) {
     let genreNames = []
@@ -56,86 +41,39 @@ function getGenresFromManga(langCode: string, manga: Manga | undefined) {
     return getGenreNames(langCode, manga.genres).slice(0, 3)
 }
 
-/**
- * Fetches manga data from the server.
- */
-async function getMangaList() {
-    const client = createApolloClient()
-    const {data} = await client.query({
-        query: gql(/*GraphQL*/`
-            query Query($fieldsFilterLangCodes: [String!]) {
-                mangas(fieldsFilterLangCodes: $fieldsFilterLangCodes) {
-                    _id
-                    ageRating
-                    covers {
-                        lang,
-                        imagePath
-                    }
-                    titles {
-                        lang,
-                        text
-                    }
-                    genres {
-                        names {
-                            lang,
-                            text
-                        }
-                    }
-                }
-            }
-        `)
-    })
-
-    return data.mangas
-}
 
 /**
  * Displays recommended manga.
  * @returns {ReactElement} The recommended manga ReactElement.
  */
-export default function RecommendedManga(): React.ReactElement {
-    const [loading, setLoading] = useState<boolean>(true)
-    const [mangas, setMangas] = useState<Manga[]>([])
+export default function RecommendedManga({mangas}: RecommendedMangaProps): React.ReactElement {
     const [currentIndex, setCurrentIndex] = useState<number>(0)
-    const [mangaCovers, setMangaCovers] = useState<string[]>([])
 
-    useEffect(() => {
-        async function fetchData() {
-            const mangaList = await getMangaList()
-            if (mangaList && mangaList.length > 0) {
-                setMangas(mangaList)
-                setLoading(false)
-
-                const covers: string[] = []
-                mangaList.forEach((manga) => {
-                    covers.push(manga.covers[0].imagePath)
-                })
-                setMangaCovers(covers)
-            }
-        }
-
-        void fetchData()
-    }, [])
+    const mangaCovers = mangas.map(manga => manga.covers[0].imagePath)
 
     const carouselChangeHandler = (index: number) => {
         if (index > mangas.length - 1) return false
         setCurrentIndex(index)
     }
 
+    // TODO: perspective plugin on PC
+    const plugins = [
+        new AutoPlay({
+            duration: 5000,
+            animationDuration: 1500
+        })
+    ]
+
     return (
         <div className={styles.recommended}>
-            {loading ? (
-                <div className={styles.loading}>Loading...</div>
-            ) : (
-                <Carousel
-                    showThumbs={false}
-                    showStatus={false}
-                    infiniteLoop={true}
-                    autoPlay={true}
-                    interval={8000}
-                    onChange={carouselChangeHandler}
-                >
-                    {mangas.map((manga) => (
+            <Flicking
+                circular={true}
+                panelsPerView={1}
+                plugins={plugins}
+                onChanged={(e) => carouselChangeHandler(e.index)}
+            >
+                {mangas.map((manga) => (
+                    <>
                         <div key={manga._id} className={styles.mangaCard}>
                             <Image
                                 src={`${manga.covers[0]?.imagePath}`}
@@ -146,9 +84,9 @@ export default function RecommendedManga(): React.ReactElement {
                             />
                             <AgeRatingFlag className={styles.ageRating} rating={manga.ageRating}/>
                         </div>
-                    ))}
-                </Carousel>
-            )}
+                    </>
+                ))}
+            </Flicking>
             <div className={styles.bottom}>
                 <GenreList className={styles.genres} genres={getGenresFromManga("rus", mangas[currentIndex])}/>
                 <RecommendedMangaActions/>

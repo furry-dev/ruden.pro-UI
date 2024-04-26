@@ -1,12 +1,13 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import type {Metadata} from "next"
+import {Inter} from "next/font/google"
 import "./globals.sass"
 import React from "react"
 
 import Footer from "@/components/basic/Layouts/Footer"
 import Header from "@/components/basic/Layouts/Header"
+import {ThemeLoader} from "@/components/screens/Settings/SetTheme/ThemeLoader"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({subsets: ["latin"]})
 
 export const metadata: Metadata = {
     title: "Ruden - Manga",
@@ -16,14 +17,15 @@ export const metadata: Metadata = {
 export default function RootLayout({
     children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru">
+        <html lang="ru" data-theme={"dark"}>
             <body className={inter.className}>
-                <Header />
+                <Header/>
                 {children}
-                <Footer />
+                <Footer/>
+                <ThemeLoader/>
             </body>
         </html>
     )

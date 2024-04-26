@@ -1,18 +1,17 @@
 "use client"
 
 import {ChangeEvent} from "react"
-import {Theme, useTheme} from "./themeUtils"
+import {getTheme, isTypeOfTheme, setTheme} from "./themeUtils"
+
 
 export default function SetTheme() {
-    const [theme, setTheme] = useTheme()
-
     const themeChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-        const value = e.target.value as Theme
-        setTheme(value)
+        const value = e.target.value
+        if (isTypeOfTheme(value)) setTheme(value)
     }
 
     return (
-        <select onChange={themeChangeHandler} value={theme}>
+        <select onChange={themeChangeHandler} value={getTheme()}>
             <option value={"light"}>light</option>
             <option value={"dark"}>dark</option>
         </select>

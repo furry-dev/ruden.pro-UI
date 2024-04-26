@@ -1,8 +1,12 @@
 "use client"
 
-import {useTheme} from "./themeUtils"
+import {useEffect} from "react"
+import {getTheme} from "@/components/screens/Settings/SetTheme/themeUtils"
+
 
 export function ThemeLoader() {
-    useTheme()
+    useEffect(() => {
+        document.documentElement.dataset.theme = getTheme()
+    })
     return null
 }

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
+    "@egjs/flicking-plugins": "^4.7.1",
+    "@egjs/react-flicking": "^4.11.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
@@ -25,6 +27,8 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-responsive-carousel": "^3.2.23",
+    "react-spring": "^9.7.3",
+    "react-spring-carousel": "^2.0.19",
     "react-swipeable": "^7.0.1",
     "react-swipeable-list": "^1.9.3",
     "react-swipeable-views": "^0.14.0",

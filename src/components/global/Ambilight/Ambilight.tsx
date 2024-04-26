@@ -42,7 +42,7 @@ export default function Ambilight(props: AmbilightProps) {
 
                 requestAnimationFrame(animate)
             }
-            img.src = props.imagesUrls[props.currentIndex]
+            if (props.imagesUrls[props.currentIndex]) img.src = props.imagesUrls[props.currentIndex]
         }
     }, [context, props.currentIndex, props.fadeDuration, props.imagesUrls])
 
