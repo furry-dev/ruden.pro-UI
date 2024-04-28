@@ -67,24 +67,23 @@ export default function RecommendedManga({mangas}: RecommendedMangaProps): React
     return (
         <div className={styles.recommended}>
             <Flicking
+                key={"recommended"}
                 circular={true}
                 panelsPerView={1}
                 plugins={plugins}
                 onWillChange={(e) => carouselChangeHandler(e.index)}
             >
                 {mangas.map((manga) => (
-                    <>
-                        <div key={manga._id} className={styles.mangaCard}>
-                            <Image
-                                src={`${manga.covers[0]?.imagePath}`}
-                                alt={manga.titles[0].text}
-                                width={375}
-                                height={535}
-                                className={styles["background-image"]}
-                            />
-                            <AgeRatingFlag className={styles.ageRating} rating={manga.ageRating}/>
-                        </div>
-                    </>
+                    <div key={manga._id} className={styles.mangaCard}>
+                        <Image
+                            src={`${manga.covers[0]?.imagePath}`}
+                            alt={manga.titles[0].text}
+                            width={375}
+                            height={535}
+                            className={styles["background-image"]}
+                        />
+                        <AgeRatingFlag className={styles.ageRating} rating={manga.ageRating}/>
+                    </div>
                 ))}
             </Flicking>
             <div className={styles.bottom}>
