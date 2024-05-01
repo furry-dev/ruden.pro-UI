@@ -7,6 +7,7 @@ import {gql} from "@/__generated__"
 import styles from "./Home.module.sass"
 import Header from "@/components/basic/Layouts/Header"
 
+
 /**
  * Fetches manga data from the server.
  */
@@ -35,7 +36,15 @@ async function getMangaList() {
                     slug
                 }
             }
-        `)
+        `),
+        variables: {
+            fieldsFilterLangCodes: ["rus", "eng", "jpn"]
+        },
+        context: {
+            fetchOptions: {
+                next: {revalidate: 3600},
+            }
+        }
     })
 
     return data.mangas

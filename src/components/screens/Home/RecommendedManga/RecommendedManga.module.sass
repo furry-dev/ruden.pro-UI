@@ -11,14 +11,14 @@ $recommendedHeight: calc(100vw / 125 * 178)
 
       font-size: 18px
 
-  .background-image
-    display: flex
+    .background-image
+      display: flex
 
-    filter: brightness(95%)
-    object-fit: cover
+      filter: brightness(95%)
+      object-fit: cover
 
-    width: auto
-    height: $recommendedHeight
+      width: 100%
+      height: auto
 
   .loading
     height: $recommendedHeight
@@ -56,3 +56,16 @@ $recommendedHeight: calc(100vw / 125 * 178)
     z-index: -1
 
     width: 100%
+
+@media ((min-width: 768px))
+  .recommended
+    padding: 30px 0
+
+    .mangaCard
+      border-radius: 15px
+      overflow: hidden
+
+    .ambilight
+      filter: blur(50px) brightness(80%)
+      height: 100%
+

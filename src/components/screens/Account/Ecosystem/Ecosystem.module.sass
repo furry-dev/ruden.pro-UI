@@ -1,0 +1,60 @@
+.modal
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+
+  background: var(--background)
+
+  .header
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+    padding: 5px 15px 0
+
+    .modalName
+      font-size: 20px
+
+    .closeBtn
+      background: none
+      border: none
+      outline: none
+      cursor: pointer
+
+      font-size: 20px
+
+      color: var(--active-tab-color)
+
+  .content
+    padding: 15px
+
+    display: flex
+    flex-direction: column
+
+    list-style: none
+
+    .link
+      display: flex
+      align-items: center
+      height: 55px
+      width: 100%
+
+      gap: 1.5rem
+
+      font-size: 16px
+      padding: 0 1rem
+
+      color: var(--text-contrast)
+      transition: background-color 0.3s ease-out
+
+      &:hover, &:focus
+        background-color: var(--hover-bg-color)
+
+      .icon
+        height: 20px
+        color: var(--tab-color)
+
+        display: flex
+        place-content: center

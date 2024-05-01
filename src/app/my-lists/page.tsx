@@ -1,4 +1,6 @@
-import { ReactElement } from "react"
+"use client"
+
+import {ReactElement, Suspense} from "react"
 import MyLists from "@/components/screens/MyLists/MyLists"
 
 /**
@@ -6,5 +8,9 @@ import MyLists from "@/components/screens/MyLists/MyLists"
  * @returns {ReactElement} The my-list page ReactElement.
  */
 export default function MyListsPage(): ReactElement {
-    return <MyLists />
+    return (
+        <Suspense>
+            <MyLists/>
+        </Suspense>
+    )
 }

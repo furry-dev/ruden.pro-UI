@@ -1,5 +1,5 @@
-import styles from './Logo.module.sass'
-import { ReactElement } from 'react';
+import styles from "./Logo.module.sass"
+import { ReactElement } from "react"
 
 /**
  * Renders the logo component.

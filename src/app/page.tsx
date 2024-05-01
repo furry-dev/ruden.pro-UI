@@ -1,5 +1,5 @@
-import Home from "@/components/screens/Home/Home";
-import {ReactElement} from "react";
+import Home from "@/components/screens/Home/Home"
+import {ReactElement} from "react"
 
 /**
  * Home page.

@@ -31,7 +31,7 @@
 
     background-color: var(--background)
 
-    padding: 30px 15px 15px
+    padding: 60px 15px 15px
 
     color: var(--text-contrast)
 
@@ -53,6 +53,63 @@
 
       box-shadow: 0 0 15px 3px var(--shadow-color)
 
+    .voter
+      position: absolute
+      left: 0
+      right: 0
+      top: 10px
+
+      padding: 0 calc((20% - 8px) / 2)
+
     .mangaTitle
       margin-bottom: 15px
       font-size: 24px
+
+
+@media ((min-width: 1024px))
+  $coverHeight: calc(var(--manga-meta-data-height) - 60px)
+  $coverWidth: calc($coverHeight / 178 * 125)
+  $coverMargin: calc($coverWidth + 60px)
+
+  .main
+    perspective: none
+    margin: 70px auto 0
+
+    max-width: 1200px
+
+    .backgroundImage
+      display: none
+
+    .mainContent
+      position: relative
+      top: 0
+      padding-left: $coverMargin
+
+      .cover
+        position: absolute
+        top: 30px
+        left: 15px
+
+        transform: none
+
+        width: auto
+        height: auto
+        max-height: $coverHeight
+
+      .voter
+        width: $coverWidth
+        padding: 15px 15px 30px
+        top: calc(var(--manga-meta-data-height) - 100px)
+        left: 15px
+
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0) 100%)
+
+      .actions
+        position: absolute
+        top: calc(var(--manga-meta-data-height) - 15px)
+        width: $coverWidth
+
+        left: 15px
+
+      .chapterList
+        margin-left: calc(-1 * $coverMargin)

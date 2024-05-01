@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 /**
  * Represents the props for the CardList component.

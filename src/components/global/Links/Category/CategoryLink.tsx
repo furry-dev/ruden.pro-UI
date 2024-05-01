@@ -1,6 +1,6 @@
-import React from 'react'
-import Link from 'next/link'
-import styles from './CategoryLink.module.sass'
+import React from "react"
+import Link from "next/link"
+import styles from "./CategoryLink.module.sass"
 
 interface Props {
     children: React.ReactNode,

@@ -18,7 +18,7 @@ const leadingActions = (id: number) => (
         <SwipeAction
             destructive={true}
             onClick={() => toast.success(`${id} Перемещено в "В планах"`)}
-            >
+        >
             <div className={styles.moveButton}>
                 <FontAwesomeIcon icon={faBookmark} />
                 В планах
@@ -27,7 +27,7 @@ const leadingActions = (id: number) => (
         <SwipeAction
             destructive={true}
             onClick={() => toast.success(`${id} Перемещено в "Брошено"`)}
-            >
+        >
             <div className={styles.moveButton}>
                 <FontAwesomeIcon icon={faCircleXmark} />
                 Брошено
@@ -70,7 +70,7 @@ export default function MangaSwipeableList(props: MangaSwipeableListProps) {
                 type={Type.IOS}
                 // fullSwipe={true}
                 // threshold={0.7}
-                >
+            >
                 {
                     mangas.map((x, i) => (
                         <SwipeableListItem

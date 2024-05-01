@@ -23,6 +23,8 @@
     padding: 0.5rem 1rem
     font-weight: bold
 
+    cursor: pointer
+
     .icon
       height: 22px
       width: 22px
@@ -30,12 +32,22 @@
 
   .actions-button
     color: var(--text-contrast)
+
     &:hover, &:focus
-      color: inherit
+      color: var(--background)
       background-color: var(--text-contrast)
 
   .read-button
     background-color: var(--text-contrast)
+
     &:hover, &:focus
       background: none
       color: var(--text-contrast)
+
+
+@media ((min-width: 1024px))
+  .actions
+    gap: 15px
+
+    .button
+      width: 100%

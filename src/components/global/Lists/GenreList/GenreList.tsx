@@ -1,5 +1,5 @@
-import styles from './GenreList.module.sass';
-import { Fragment, ReactElement } from 'react';
+import styles from "./GenreList.module.sass"
+import { Fragment, ReactElement } from "react"
 
 /**
  * Renders a list of genres.
@@ -16,5 +16,5 @@ export default function GenreList({ genres, className }: GenreListProps): ReactE
                 </Fragment>
             ))}
         </ul>
-    );
+    )
 }

@@ -1,5 +1,5 @@
-import Search from '@/components/screens/Search/Search'
-import { ReactElement } from 'react'
+import Search from "@/components/screens/Search/Search"
+import { ReactElement } from "react"
 
 /**
  * Search page.

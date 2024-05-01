@@ -1,12 +1,12 @@
 "use client"
 
-import styles from './Footer.module.sass'
-import Image from "next/image";
-import Link from "next/link";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faHeart, faHouse, faMagnifyingGlass, faNewspaper} from "@fortawesome/free-solid-svg-icons";
-import { ReactElement } from 'react'
-import { usePathname } from 'next/navigation'
+import styles from "./Footer.module.sass"
+import Image from "next/image"
+import Link from "next/link"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faHeart, faHouse, faMagnifyingGlass, faNewspaper} from "@fortawesome/free-solid-svg-icons"
+import { ReactElement } from "react"
+import { usePathname } from "next/navigation"
 
 /**
  * Renders the footer component.

@@ -14,6 +14,8 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+  DateTime: { input: any; output: any; }
 };
 
 export type CreateGenreInput = {
@@ -116,11 +118,13 @@ export type MangaEntity = {
   artists: Array<PersonEntity>;
   authors: Array<PersonEntity>;
   covers: Array<LocalizedImageEntity>;
+  createdAt: Scalars['DateTime']['output'];
   descriptions: Array<LocalizedStrEntity>;
   genres: Array<GenreEntity>;
   slug: Scalars['String']['output'];
   status: MangaStatusEnum;
   titles: Array<LocalizedStrEntity>;
+  updatedAt: Scalars['DateTime']['output'];
   year: Scalars['Int']['output'];
 };
 
@@ -218,7 +222,7 @@ export type QueryGenreArgs = {
 
 export type QueryMangaArgs = {
   fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']>>;
-  id: Scalars['String']['input'];
+  idOrSlug: Scalars['String']['input'];
 };
 
 
@@ -278,6 +282,14 @@ export type UpdatePersonInput = {
   socialLinks?: InputMaybe<Array<LabeledStrDto>>;
 };
 
+export type ExampleQueryQueryVariables = Exact<{
+  idOrSlug: Scalars['String']['input'];
+  fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+}>;
+
+
+export type ExampleQueryQuery = { __typename?: 'Query', manga: { __typename?: 'MangaEntity', year: number, status: MangaStatusEnum, createdAt: any, covers: Array<{ __typename?: 'LocalizedImageEntity', imagePath: string, lang: string }>, titles: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, descriptions: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, genres: Array<{ __typename?: 'GenreEntity', names: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }>, authors: Array<{ __typename?: 'PersonEntity', _id: string, name: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }>, artists: Array<{ __typename?: 'PersonEntity', _id: string, name: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }> } };
+
 export type QueryQueryVariables = Exact<{
   fieldsFilterLangCodes?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
 }>;
@@ -286,4 +298,5 @@ export type QueryQueryVariables = Exact<{
 export type QueryQuery = { __typename?: 'Query', mangas: Array<{ __typename?: 'MangaEntity', _id: string, ageRating: MangaAgeRatingEnum, slug: string, covers: Array<{ __typename?: 'LocalizedImageEntity', lang: string, imagePath: string }>, titles: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }>, genres: Array<{ __typename?: 'GenreEntity', names: Array<{ __typename?: 'LocalizedStrEntity', lang: string, text: string }> }> }> };
 
 
+export const ExampleQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ExampleQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"idOrSlug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"manga"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"idOrSlug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"idOrSlug"}}},{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"imagePath"}},{"kind":"Field","name":{"kind":"Name","value":"lang"}}]}},{"kind":"Field","name":{"kind":"Name","value":"titles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"descriptions"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genres"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"names"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"authors"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"artists"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}}]}}]}}]} as unknown as DocumentNode<ExampleQueryQuery, ExampleQueryQueryVariables>;
 export const QueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Query"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}},"type":{"kind":"ListType","type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mangas"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"fieldsFilterLangCodes"},"value":{"kind":"Variable","name":{"kind":"Name","value":"fieldsFilterLangCodes"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"ageRating"}},{"kind":"Field","name":{"kind":"Name","value":"covers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"imagePath"}}]}},{"kind":"Field","name":{"kind":"Name","value":"titles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}},{"kind":"Field","name":{"kind":"Name","value":"genres"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"names"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lang"}},{"kind":"Field","name":{"kind":"Name","value":"text"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]} as unknown as DocumentNode<QueryQuery, QueryQueryVariables>;

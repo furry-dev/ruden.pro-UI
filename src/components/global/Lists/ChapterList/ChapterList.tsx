@@ -3,12 +3,12 @@
 import React from "react"
 import Link from "next/link"
 import styles from "./ChapterList.module.sass"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleDown, faAngleUp, faArrowDownShortWide } from "@fortawesome/free-solid-svg-icons"
-import { ChapterListProps } from "@/components/global/Lists/ChapterList/chapter-list.interfaces"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faAngleDown, faAngleUp, faArrowDownShortWide} from "@fortawesome/free-solid-svg-icons"
+import {ChapterListProps} from "@/components/global/Lists/ChapterList/chapter-list.interfaces"
 
 export default function ChapterList(props: ChapterListProps) {
-    const { showAll, setShowAll } = props
+    const {showAll, setShowAll} = props
 
     const handleClick = () => {
         setShowAll(!showAll)
@@ -29,10 +29,10 @@ export default function ChapterList(props: ChapterListProps) {
     }
 
     return (
-        <div>
+        <div className={props.className || ""}>
             <div className={styles.chapterListHeader}>
                 <h3>Все главы:</h3>
-                <button className={styles.sortButton}><FontAwesomeIcon icon={faArrowDownShortWide} /> Сортировка
+                <button className={styles.sortButton}><FontAwesomeIcon icon={faArrowDownShortWide}/> Сортировка
                 </button>
             </div>
             <ul className={styles.chapterList}>
@@ -41,12 +41,12 @@ export default function ChapterList(props: ChapterListProps) {
             <button onClick={handleClick} className={styles.showAll}>
                 {showAll ? (
                     <>
-                        <FontAwesomeIcon icon={faAngleUp} className={styles.icon} />
+                        <FontAwesomeIcon icon={faAngleUp} className={styles.icon}/>
                         Скрыть все главы
                     </>
                 ) : (
                     <>
-                        <FontAwesomeIcon icon={faAngleDown} className={styles.icon} />
+                        <FontAwesomeIcon icon={faAngleDown} className={styles.icon}/>
                         Показать все главы
                     </>
                 )}

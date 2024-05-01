@@ -3,13 +3,14 @@ import styles from "./Manga.module.sass"
 import MangaPageActions from "@/components/screens/Manga/Actions/MangaPageActions"
 import MangaData from "@/components/screens/Manga/MangaData/MangaData"
 import {MangaProps} from "@/components/screens/Manga/Manga.interface"
+import Voter from "@/components/screens/Manga/Voter/Voter"
 
 
-export default function Manga({params}: MangaProps) {
+export default async function Manga({manga}: MangaProps) {
     return (
         <main className={styles.main}>
             <Image
-                src={"/manga-cover.jpg"}
+                src={manga.covers[0].imagePath}
                 alt={"background image"}
                 width={375}
                 height={535}
@@ -17,15 +18,18 @@ export default function Manga({params}: MangaProps) {
             />
             <div className={`${styles.parallaxLayer} ${styles.mainContent}`}>
                 <Image
-                    src={"/manga-cover.jpg"}
-                    alt={"background image"}
+                    src={manga.covers[0].imagePath}
+                    alt={manga.titles[0].text}
                     width={375}
                     height={535}
                     className={styles.cover}
                 />
-                <h1 className={styles.mangaTitle}>Я отдала свой первый раз брату</h1>
-                <MangaPageActions/>
-                <MangaData/>
+                <Voter className={styles.voter} userVote={null}/>
+                <div className={styles.data}>
+                    <h1 className={styles.mangaTitle} id={"manga-title"}>{manga.titles[0].text}</h1>
+                    <MangaPageActions className={styles.actions}/>
+                    <MangaData chapterListClassName={styles.chapterList} manga={manga}/>
+                </div>
             </div>
         </main>
     )

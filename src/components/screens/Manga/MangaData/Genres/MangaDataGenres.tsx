@@ -1,17 +1,12 @@
 import styles from "./MangaDataGenres.module.sass"
 import CategoryLink from "@/components/global/Links/Category/CategoryLink"
 
-export default function MangaDataGenres() {
+export default function MangaDataGenres({genres}: { genres: string[] }) {
     return (
         <ul className={styles.genres}>
-            <li><CategoryLink href={"/manga?genres=1"}>Повседневность</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=2"}>Романтика</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=3"}>Школа</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=4"}>В первый раз</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=5"}>Изначилование</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=6"}>Инцест</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=7"}>Принуждение</CategoryLink></li>
-            <li><CategoryLink href={"/manga?genres=8"}>Спящие</CategoryLink></li>
+            {genres.map((genre) => (
+                <li key={null}><CategoryLink href={`/manga?genres=["${genre}"]`}>{genre}</CategoryLink></li>
+            ))}
         </ul>
     )
 }

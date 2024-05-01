@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import Home from '@/components/screens/Home/Home';
+import React, { ReactElement } from "react"
+import Home from "@/components/screens/Home/Home"
 
 
 /**

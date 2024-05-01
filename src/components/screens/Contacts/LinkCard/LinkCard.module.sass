@@ -1,0 +1,52 @@
+.listItem
+  &.centered
+    .card
+      .right
+        width: min-content
+
+        .text, .subText
+          white-space: nowrap
+
+  .card
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 15px
+
+    height: 70px
+
+    background-color: var(--overlay)
+
+    border: 1px solid var(--tab-border-color)
+    border-radius: 15px
+
+    &:hover
+      .icon
+        scale: 1.2
+
+      .right
+        margin-left: 3px
+
+    .icon
+      color: var(--text-contrast)
+      height: 24px
+
+      transition: scale 0.3s ease-out
+
+    .right
+      width: calc(100% - 80px)
+
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      gap: 5px
+
+      transition: width 0.3s ease-out, margin-left 0.3s ease-out
+
+      .text
+        font-size: 15px
+
+      .subText
+        font-size: 11px
+

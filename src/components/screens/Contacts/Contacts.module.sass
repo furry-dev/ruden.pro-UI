@@ -1,0 +1,28 @@
+.main
+  display: flex
+  flex-direction: column
+  justify-content: space-evenly
+  padding: 25px
+
+  .header
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: 40px
+
+    color: var(--text-contrast)
+
+    .icon
+      height: 42px
+
+  .links
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 7px
+
+    list-style: none
+
+    .link:last-child
+      grid-column-end: span 2
+

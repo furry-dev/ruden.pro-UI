@@ -14,19 +14,17 @@ export const metadata: Metadata = {
     description: "Сайт для чтения манг",
 }
 
-export default function RootLayout({
+export default function MangaPagesLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ru" data-theme={"dark"}>
-            <body className={inter.className}>
-                <Header/>
-                {children}
-                <Footer/>
-                <ThemeLoader/>
-            </body>
-        </html>
+        <>
+            <Header/>
+            {children}
+            <Footer/>
+            <ThemeLoader/>
+        </>
     )
 }
